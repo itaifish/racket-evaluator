@@ -7,9 +7,7 @@
 
 (define (eval-program program-expr-list)
   (let ([res (eval-expr-list (second program-expr-list))])
-        (if (eq? null (cdr res))
-            (car res)
-            (cdr res))))
+    (last res)))
 
 (define (eval-expr-list expr-list)
   (let* ([expr (second expr-list)]
@@ -38,6 +36,8 @@
 
 (define (eval-number number)
   (second (second number)))
+
+
 
 ;;Names hash
 (define names (hash

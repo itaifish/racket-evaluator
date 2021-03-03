@@ -37,7 +37,19 @@
 (define (eval-number number)
   (second (second number)))
 
+(define and-special
+  (λ ands
+    (cond
+      [(eq? (length ands) 0) #t]
+      [(eq? (length ands) 1) (first ands)]
+      [else (and (first ands) (apply and-special (rest ands)))])))
 
+(define or-special
+  (λ ors
+    (cond
+      [(eq? (length ors) 0) #f]
+      [(eq? (length ors) 1) (first ors)]
+      [else (or (first ors) (apply or-special (rest ors)))])))
 
 ;;Names hash
 (define names (hash
@@ -50,10 +62,10 @@
                    'string=? string=?
                    'not not
                    '= =
-                   '< <))
+                   '< <
+                   'and and-special
+                   'or or-special))
 
-;;
-;;TODO
 (define (eval-name name)
   (hash-ref names (second name)))
 

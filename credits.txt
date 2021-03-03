@@ -1,1 +1,2 @@
 1. https://docs.racket-lang.org/
+2. https://stackoverflow.com/questions/18211198/how-do-i-handle-a-variable-number-of-arguments-passed-to-a-function-in-racket (for writing and-special and or-special)
